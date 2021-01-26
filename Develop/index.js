@@ -1,6 +1,7 @@
 // TODO: Include packages needed for this application
 const inquirer = require('inquirer');
 const fs = require('fs');
+
 // TODO: Create an array of questions for user input
 const questions = [
     {
@@ -51,25 +52,25 @@ const questions = [
 ];
 
 // TODO: Create a function to write README file
-function writeFile(err) {fs.writeFile('README.md', response) 
-    if (err) {
-        console.error(err);
+fs.writeFile("README.md", "hello world", (err) => {
+    if(err) {
+        console.log(err);
     }
     else {
-        console.log('created file');
-
+        console.log("success")
     }
-  // TODO: Describe how this ternary operator (if else statement) works
+})
+    
   
-}
+
 
 // TODO: Create a function to initialize app
 function init() {
     inquirer.prompt(questions)
     .then((response) =>
-    writeFile(err)
-      ? console.log('Success!')
-      : console.log('You forgot your password already?!')
+    console.log(response),
+    writeFile()
+ 
   );
     
 }
