@@ -50,9 +50,8 @@ const questions = [
       },
 ];
 
-
 // TODO: Create a function to write README file
-fs.writeFile('README.md', questions);(err) => {
+function writeFile(err) {fs.writeFile('README.md', response) 
     if (err) {
         console.error(err);
     }
@@ -62,11 +61,19 @@ fs.writeFile('README.md', questions);(err) => {
     }
   // TODO: Describe how this ternary operator (if else statement) works
   
-
 }
 
 // TODO: Create a function to initialize app
-function init() {}
+function init() {
+    inquirer.prompt(questions)
+    .then((response) =>
+    writeFile(err)
+      ? console.log('Success!')
+      : console.log('You forgot your password already?!')
+  );
+    
+}
 
 // Function call to initialize app
 init();
+
