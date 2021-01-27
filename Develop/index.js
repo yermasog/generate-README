@@ -1,7 +1,7 @@
 // TODO: Include packages needed for this application
 const inquirer = require('inquirer');
 const fs = require('fs');
-// const generate = require("../generateMarkdown.js")
+// const generateMarkdown = require('./utils/generateMarkdown');
 
 // TODO: Create an array of questions for user input
 const questions = [
@@ -59,7 +59,7 @@ inquirer
   // console.log(response),
   {
     let readme = `# ${response.title}
-${licensephoto}    
+   
 ## Table of Contents
 [Description](#link)\n   
 [Installation](#link)\n
@@ -92,6 +92,7 @@ ${response.testing}
 
 ${response.email}`;
 
+
     fs.writeFile("README.md", readme, (err) => {
       if (err) {
         console.log(err);
@@ -101,16 +102,3 @@ ${response.email}`;
   );
 
 
-switch (expression) {
-  case "MIT License":
-    licensephoto = "[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)";
-    break;
-  case "GNU GPLv3":
-    licensephoto = "[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)";
-    break;
-  case "The Unlicense":
-    licensephoto = "[![License: Unlicense](https://img.shields.io/badge/license-Unlicense-blue.svg)](http://unlicense.org/)";
-
-  default:
-
-}
