@@ -1,7 +1,7 @@
 // TODO: Include packages needed for this application
 const inquirer = require('inquirer');
 const fs = require('fs');
-const generate = require("../generateMarkdown.js")
+// const generate = require("../generateMarkdown.js")
 
 // TODO: Create an array of questions for user input
 const questions = [
@@ -28,7 +28,7 @@ const questions = [
   {
     type: "list",
     message: "What kind of license do you want?",
-    choices: ["a", "b", "c"],
+    choices: ["MIT License", "GNU GPLv3", "The Unlicense"],
     name: "license"
   },
   {
@@ -51,58 +51,66 @@ const questions = [
     message: "What is your email address?",
     name: "email"
   },
-
-
 ]
 
-// TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
+inquirer
+  .prompt(questions)
+  .then(response =>
+  // console.log(response),
+  {
+    let readme = `# ${response.title}
+${licensephoto}    
+## Table of Contents
+[Description](#link)\n   
+[Installation](#link)\n
+[Usage](#link)\n
+[License](#link)\n
+[Contributing](#link)\n
+[Tests](#link)\n
+[Questions](#link) 
+      
+## Description
+${response.description}
+      
+## Installation
+${response.installation}
+      
+## Usage
+${response.usage}
+      
+## License
+${response.license}
+      
+## Contributing
+${response.contributing}
+      
+## Tests
+${response.testing}
+      
+## Questions
+[https://github.com/${response.github}](https://github.com/${response.github})\n
 
-// TODO: Create a function to initialize app
-function init() {}
+${response.email}`;
 
-// Function call to initialize app
-init();
+    fs.writeFile("README.md", readme, (err) => {
+      if (err) {
+        console.log(err);
+      }
+    })
+  }
+  );
 
 
-inquirer.prompt(questions).then(data =>
-// console.log(response),
+switch (expression) {
+  case "MIT License":
+    licensephoto = "[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)";
+    break;
+  case "GNU GPLv3":
+    licensephoto = "[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)";
+    break;
+  case "The Unlicense":
+    licensephoto = "[![License: Unlicense](https://img.shields.io/badge/license-Unlicense-blue.svg)](http://unlicense.org/)";
 
-{
-  generateMarkdown(data)
-//   let readme = `
-// # ${response.title}
-      
-// ## Description
-// ${response.description}
-      
-// ## Installation
-// ${response.installation}
-      
-// ## Usage
-// ${response.usage}
-      
-// ## License
-// ${response.license}
-      
-// ## Contributing
-// ${response.contributing}
-      
-// ## Tests
-// ${response.testing}
-      
-// ## Questions
-// ${response.github}
-// ${response.email}`;
+  default:
 
-  fs.writeFile("README.md", readme, (err) => {
-    if (err) {
-      console.log(err);
-    }
-    else {
-      console.log("created file");
-    }
-  })
 }
-);
-
