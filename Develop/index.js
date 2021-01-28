@@ -61,13 +61,13 @@ inquirer
     let readme = `# ${response.title}
    
 ## Table of Contents
-[Description](#link)\n   
-[Installation](#link)\n
-[Usage](#link)\n
-[License](#link)\n
-[Contributing](#link)\n
-[Tests](#link)\n
-[Questions](#link) 
+* [Description](#link)   
+* [Installation](#link)
+* [Usage](#link)
+* [License](#link)
+* [Contributing](#link)
+* [Tests](#link)
+* [Questions](#link) 
       
 ## Description
 ${response.description}
