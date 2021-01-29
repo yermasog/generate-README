@@ -1,7 +1,7 @@
 // TODO: Include packages needed for this application
 const inquirer = require('inquirer');
 const fs = require('fs');
-// const generateMarkdown = require('./utils/generateMarkdown');
+const generateMarkdown = require('./utils/generateMarkdown');
 
 // TODO: Create an array of questions for user input
 const questions = [
@@ -51,54 +51,31 @@ const questions = [
     message: "What is your email address?",
     name: "email"
   },
-]
+];
 
-inquirer
-  .prompt(questions)
-  .then(response =>
-  // console.log(response),
-  {
-    let readme = `# ${response.title}
-   
-## Table of Contents
-* [Description](#link)   
-* [Installation](#link)
-* [Usage](#link)
-* [License](#link)
-* [Contributing](#link)
-* [Tests](#link)
-* [Questions](#link) 
-      
-## Description
-${response.description}
-      
-## Installation
-${response.installation}
-      
-## Usage
-${response.usage}
-      
-## License
-${response.license}
-      
-## Contributing
-${response.contributing}
-      
-## Tests
-${response.testing}
-      
-## Questions
-[https://github.com/${response.github}](https://github.com/${response.github})\n
-
-${response.email}`;
+// TODO: Create a function to write README file
+function writeFile(fileName, fileContent) {
+  fs.writeFile(fileName, fileContent, (err) => {
+    if (err) {
+      console.log(err);
+    }
+  })
+}
 
 
-    fs.writeFile("README.md", readme, (err) => {
-      if (err) {
-        console.log(err);
-      }
+// TODO: Create a function to initialize app
+function init() {
+  inquirer
+    .prompt(questions)
+    .then((response) => {
+      let markDown = generateMarkdown(response)
+      writeFile("readme.md", markDown)
+
     })
-  }
-  );
+
+}
+
+// Function call to initialize app
+init();
 
 
