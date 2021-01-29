@@ -18,38 +18,48 @@
 
 // TODO: Create a function that returns the license link
 // If there is no license, return an empty string
-function renderLicenseLink(license) {}
+// function renderLicenseLink(license) {}
 
 // TODO: Create a function that returns the license section of README
 // If there is no license, return an empty string
-function renderLicenseSection(license) {}
+// function renderLicenseSection(license) {}
 
 // TODO: Create a function to generate markdown for README
-function generateMarkdown(data) {
-  return data
-`# ${data.title}
+function generateMarkdown(response) {
+  return response
+`# ${response.title}
+   
+## Table of Contents
+* [Description](#link)   
+* [Installation](#link)
+* [Usage](#link)
+* [License](#link)
+* [Contributing](#link)
+* [Tests](#link)
+* [Questions](#link) 
       
 ## Description
-${data.description}
+${response.description}
       
 ## Installation
-${data.installation}
+${response.installation}
       
 ## Usage
-${data.usage}
+${response.usage}
       
 ## License
-${data.license}
+${response.license}
       
 ## Contributing
-${data.contributing}
+${response.contributing}
       
 ## Tests
-${data.testing}
+${response.testing}
       
 ## Questions
-${data.github}
-${data.email}`;
+[https://github.com/${response.github}](https://github.com/${response.github})\n
+
+${response.email}`;
 
 }
 
