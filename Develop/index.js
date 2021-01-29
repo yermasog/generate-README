@@ -64,11 +64,11 @@ function writeFile(fileName, answers) {
 function init() {
   inquirer
     .prompt(questions)
-    .then((response) =>
-      generateMarkdown(response)
-        .then(writeFile("readme.md", response))
+    .then((response) => {
+      let answers = generateMarkdown(response)
+      writeFile("readme.md", answers)
 
-    )
+    })
 
 }
 
